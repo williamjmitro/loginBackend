@@ -8,10 +8,12 @@ import com.highline.login.dto.UpdateUserPasswordRequest;
 import com.highline.login.dto.UpdateUserPasswordResponse;
 import com.highline.login.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class UserServiceImpl extends BaseService implements UserService {
 
     @Autowired
