@@ -4,14 +4,12 @@ import com.google.common.io.BaseEncoding;
 import com.highline.login.base.BaseService;
 import com.highline.login.data.UserRepository;
 import com.highline.login.domain.User;
-import com.highline.login.dto.ListUsersResponse;
-import com.highline.login.dto.UpdateUserPasswordRequest;
-import com.highline.login.dto.UpdateUserPasswordResponse;
-import com.highline.login.dto.UserDto;
+import com.highline.login.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -62,5 +60,18 @@ public class UserServiceImpl extends BaseService implements UserService {
         }
         response.setUserList(returnList);
         return response;
+    }
+
+    @Override
+    public void addUser(AddUserRequest request) {
+        User newUser = new User();
+
+        newUser.setUsername(request.getUserName());
+        newUser.setPassword(request.getPassword());
+        newUser.setCreatedOn(new Date());
+
+        userRepository.save(newUser);
+
+
     }
 }

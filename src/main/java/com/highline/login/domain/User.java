@@ -1,15 +1,14 @@
 package com.highline.login.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "user_info")
 public class User {
     @Column(name = "user_id")
+    @SequenceGenerator(name = "user_info_seq_id", sequenceName = "user_info_seq_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_info_seq_id")
     @Id
     private Integer id;
 

@@ -1,14 +1,12 @@
 package com.highline.login.endpoint;
 
+import com.highline.login.dto.AddUserRequest;
 import com.highline.login.dto.ListUsersResponse;
 import com.highline.login.dto.UpdateUserPasswordRequest;
 import com.highline.login.dto.UpdateUserPasswordResponse;
 import com.highline.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
@@ -18,15 +16,20 @@ public class UserEndpoint {
     UserService userService;
 
     @CrossOrigin
-    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json")
+    @PutMapping(path = "/update")
     public UpdateUserPasswordResponse updateUserPassword(UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(path = "/list")
     public ListUsersResponse listUser() {
         return userService.listUsers();
     }
 
+    @CrossOrigin
+    @PutMapping(path = "/add")
+    public void addUser(AddUserRequest request) {
+        userService.addUser(request);
+    }
 }
