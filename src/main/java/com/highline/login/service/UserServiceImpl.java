@@ -1,5 +1,6 @@
 package com.highline.login.service;
 
+import com.google.common.io.BaseEncoding;
 import com.highline.login.base.BaseService;
 import com.highline.login.data.UserRepository;
 import com.highline.login.domain.User;
@@ -25,16 +26,23 @@ public class UserServiceImpl extends BaseService implements UserService {
         User user = userRepository.findByUsername(request.getUserName());
 
         UpdateUserPasswordResponse response = new UpdateUserPasswordResponse();
+        byte[] currentPassword = BaseEncoding.base16().decode(user.getPassword());
 
-        if (user.getPassword().equals(request.getOldPassword())) {
+        if (currentPassword.toString().equals(request.getOldPassword())) {
 
-            user.setPassword(request.getNewPassword());
+            byte[] password = request.getNewPassword().getBytes();
+            String newPassword = BaseEncoding.base16().encode(password);
+
+            user.setPassword(newPassword);
             userRepository.save(user);
 
             response.setSuccess(true);
 
         } else {
+
             response.setSuccess(false);
+            response.setError("Invalid password");
+
         }
 
         return response;
