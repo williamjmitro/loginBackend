@@ -21,6 +21,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     @Override
     public UpdateUserPasswordResponse updateUserPassword(UpdateUserPasswordRequest request) {
 
+        log.info("> updateUserPassword");
         User user = userRepository.findByUsername(request.getUserName());
 
         UpdateUserPasswordResponse response = new UpdateUserPasswordResponse();
@@ -48,6 +49,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 
     @Override
     public ListUsersResponse listUsers() {
+
 
         List<User> userList = userRepository.findAll();
 
