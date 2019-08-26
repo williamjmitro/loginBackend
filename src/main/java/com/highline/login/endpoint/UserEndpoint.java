@@ -18,7 +18,6 @@ public class UserEndpoint extends BaseEndpoint {
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
-        log.info(request.toString());
         return userService.updateUserPassword(request);
     }
 
@@ -30,7 +29,7 @@ public class UserEndpoint extends BaseEndpoint {
 
     @CrossOrigin
     @PutMapping(path = "/add")
-    public void addUser(AddUserRequest request) {
+    public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
     }
 }
