@@ -28,7 +28,7 @@ public class UserEndpoint extends BaseEndpoint {
     }
 
     @CrossOrigin
-    @PutMapping(path = "/add")
+    @PostMapping(path = "/add")
     public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
     }
