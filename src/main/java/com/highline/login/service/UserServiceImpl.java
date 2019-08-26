@@ -27,6 +27,11 @@ public class UserServiceImpl extends BaseService implements UserService {
         UpdateUserPasswordResponse response = new UpdateUserPasswordResponse();
         byte[] currentPassword = BaseEncoding.base16().decode(user.getPassword());
         log.info("current password " + currentPassword.toString());
+
+        byte[] testPassword = request.getOldPassword().getBytes();
+        String newTestPassword = BaseEncoding.base16().encode(testPassword);
+
+        log.info("passed in password " + newTestPassword.toString());
         if (currentPassword.toString().equals(request.getOldPassword())) {
 
             byte[] password = request.getNewPassword().getBytes();
