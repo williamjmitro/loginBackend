@@ -1,5 +1,6 @@
 package com.highline.login.endpoint;
 
+import com.highline.login.base.BaseEndpoint;
 import com.highline.login.dto.AddUserRequest;
 import com.highline.login.dto.ListUsersResponse;
 import com.highline.login.dto.UpdateUserPasswordRequest;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
-public class UserEndpoint {
+public class UserEndpoint extends BaseEndpoint {
 
     @Autowired
     UserService userService;
@@ -18,6 +19,7 @@ public class UserEndpoint {
     @CrossOrigin
     @PutMapping(path = "/update")
     public UpdateUserPasswordResponse updateUserPassword(UpdateUserPasswordRequest request) {
+        log.info("> updateUserPassword");
         return userService.updateUserPassword(request);
     }
 
