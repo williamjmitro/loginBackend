@@ -35,6 +35,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 
             user.setPassword(newPassword);
             userRepository.save(user);
+            log.info("Updated password!");
 
             response.setSuccess(true);
 
