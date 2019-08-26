@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType
+@XmlType(propOrder = {"userName", "oldPassword", "newPassword"})
 public class UpdateUserPasswordRequest {
 
     private String userName;
