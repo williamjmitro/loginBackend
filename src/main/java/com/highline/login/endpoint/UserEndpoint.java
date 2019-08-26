@@ -17,7 +17,7 @@ public class UserEndpoint extends BaseEndpoint {
     UserService userService;
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-    public UpdateUserPasswordResponse updateUserPassword(UpdateUserPasswordRequest request) {
+    public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         log.info(request.toString());
         return userService.updateUserPassword(request);
     }
