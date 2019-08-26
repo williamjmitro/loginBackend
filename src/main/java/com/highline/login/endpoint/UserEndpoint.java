@@ -17,7 +17,7 @@ public class UserEndpoint extends BaseEndpoint {
     UserService userService;
 
     @CrossOrigin
-    @PutMapping(path = "/update")
+    @PutMapping(path = "/update", consumes = "application/json")
     public UpdateUserPasswordResponse updateUserPassword(UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
