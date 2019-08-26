@@ -16,6 +16,7 @@ public class UserEndpoint extends BaseEndpoint {
     @Autowired
     UserService userService;
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
