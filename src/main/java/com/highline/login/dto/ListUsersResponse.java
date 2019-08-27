@@ -1,11 +1,8 @@
 package com.highline.login.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
-@XmlRootElement
-@XmlType
+
 public class ListUsersResponse {
 
     List<UserDto> userList;

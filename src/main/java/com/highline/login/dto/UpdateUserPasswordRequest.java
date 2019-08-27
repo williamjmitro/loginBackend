@@ -1,15 +1,9 @@
 package com.highline.login.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement
-@XmlType(propOrder = {"userName", "oldPassword", "newPassword"})
 public class UpdateUserPasswordRequest {
 
     private String userName;
 
-    private String oldPassword;
 
     private String newPassword;
 
@@ -21,13 +15,6 @@ public class UpdateUserPasswordRequest {
         this.userName = userName;
     }
 
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
 
     public String getNewPassword() {
         return newPassword;
@@ -37,12 +24,4 @@ public class UpdateUserPasswordRequest {
         this.newPassword = newPassword;
     }
 
-    @Override
-    public String toString() {
-        return "UpdateUserPasswordRequest{" +
-                "userName='" + userName + '\'' +
-                ", oldPassword='" + oldPassword + '\'' +
-                ", newPassword='" + newPassword + '\'' +
-                '}';
-    }
 }
