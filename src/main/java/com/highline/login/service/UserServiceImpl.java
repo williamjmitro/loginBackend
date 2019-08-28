@@ -83,7 +83,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     public UserDto getUser(String userId) {
 
         User user = userRepository.getOne(Integer.valueOf(userId));
-
+        log.info("Found user= " + user.getUsername());
         UserDto returnUser = new UserDto();
 
         returnUser.setUserName(user.getUsername());
