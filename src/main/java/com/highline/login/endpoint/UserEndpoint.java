@@ -10,33 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(path = "/user")
 public class UserEndpoint extends BaseEndpoint {
 
     @Autowired
     UserService userService;
 
     @ResponseBody
-    @PutMapping(value = "/user/update")
+    @PutMapping(value = "/update")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
 
     @ResponseBody
-    @GetMapping(path = "/user/list")
+    @GetMapping(path = "/list")
     public ListUsersResponse listUser() {
         return userService.listUsers();
     }
 
     @ResponseBody
-    @PostMapping(path = "/user/add")
+    @PostMapping(path = "/add")
     public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
     }
 
-    @GetMapping(path = "/user/get")
-    public String index(Model model) {
+    @GetMapping(path = "/get")
+    public ModelAndView index(Model model) {
         return "index";
     }
 
