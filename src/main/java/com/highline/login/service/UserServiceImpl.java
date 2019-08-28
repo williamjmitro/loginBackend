@@ -38,9 +38,8 @@ public class UserServiceImpl extends BaseService implements UserService {
             response.setSuccess(true);
 
         } else {
-            log.info("Passwords don't match!");
             response.setSuccess(false);
-            response.setError("Invalid password");
+            response.setError("Something went wrong please try again.");
 
         }
 
