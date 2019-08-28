@@ -36,8 +36,8 @@ public class UserEndpoint extends BaseEndpoint {
     }
 
     @GetMapping(path = "/get")
-    public String updatePassword() {
-        return "updatePassword";
+    public String index() {
+        return "index";
     }
 
 }
