@@ -36,7 +36,7 @@ public class UserEndpoint extends BaseEndpoint {
     @GetMapping(path = "/get/{userId}")
     public String updatePassword(@PathVariable(name = "userId", required = true) String userId, Model model) {
         UserDto userDto = userService.getUser(userId);
-        model.addAttribute(userDto.getUserName());
+        model.addAttribute("name", userDto.getUserName());
         return "updatePassword";
     }
 
