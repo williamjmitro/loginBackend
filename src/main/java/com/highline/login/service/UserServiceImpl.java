@@ -80,7 +80,15 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public void getUser(String userId) {
+    public UserDto getUser(String userId) {
+
+        User user = userRepository.getOne(Integer.valueOf(userId));
+
+        UserDto returnUser = new UserDto();
+
+        returnUser.setUserName(user.getUsername());
+
+        return returnUser;
 
     }
 }

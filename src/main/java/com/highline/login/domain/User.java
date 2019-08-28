@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "user_info")
 public class User {
+
     @Column(name = "user_id")
     @SequenceGenerator(name = "user_info_seq_id", sequenceName = "user_info_seq_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_info_seq_id")

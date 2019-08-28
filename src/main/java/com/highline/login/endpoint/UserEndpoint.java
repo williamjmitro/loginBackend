@@ -1,13 +1,11 @@
 package com.highline.login.endpoint;
 
 import com.highline.login.base.BaseEndpoint;
-import com.highline.login.dto.AddUserRequest;
-import com.highline.login.dto.ListUsersResponse;
-import com.highline.login.dto.UpdateUserPasswordRequest;
-import com.highline.login.dto.UpdateUserPasswordResponse;
+import com.highline.login.dto.*;
 import com.highline.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -36,7 +34,9 @@ public class UserEndpoint extends BaseEndpoint {
     }
 
     @GetMapping(path = "/get")
-    public String updatePassword() {
+    public String updatePassword(@RequestParam(name = "userId", required = true) String userId, Model model) {
+        UserDto userDto = userService.getUser(userId);
+        model.addAttribute(userDto.getUserName());
         return "updatePassword";
     }
 

@@ -1,9 +1,6 @@
 package com.highline.login.service;
 
-import com.highline.login.dto.AddUserRequest;
-import com.highline.login.dto.ListUsersResponse;
-import com.highline.login.dto.UpdateUserPasswordRequest;
-import com.highline.login.dto.UpdateUserPasswordResponse;
+import com.highline.login.dto.*;
 
 public interface UserService {
 
@@ -13,5 +10,5 @@ public interface UserService {
 
     public void addUser(AddUserRequest request);
 
-    public void getUser(String userId);
+    public UserDto getUser(String userId);
 }
