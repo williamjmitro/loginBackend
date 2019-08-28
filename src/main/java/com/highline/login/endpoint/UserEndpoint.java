@@ -11,31 +11,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("user")
 public class UserEndpoint extends BaseEndpoint {
 
     @Autowired
     UserService userService;
 
     @ResponseBody
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/user/update")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
 
     @ResponseBody
-    @GetMapping(path = "/list")
+    @GetMapping(path = "/user/list")
     public ListUsersResponse listUser() {
         return userService.listUsers();
     }
 
     @ResponseBody
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/user/add")
     public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
     }
 
-    @GetMapping(path = "/get")
+    @GetMapping(path = "/user/get")
     public String index() {
         return "index";
     }
