@@ -78,4 +78,9 @@ public class UserServiceImpl extends BaseService implements UserService {
 
 
     }
+
+    @Override
+    public void getUser(String userId) {
+
+    }
 }

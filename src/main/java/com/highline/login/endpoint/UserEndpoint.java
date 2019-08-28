@@ -7,9 +7,11 @@ import com.highline.login.dto.UpdateUserPasswordRequest;
 import com.highline.login.dto.UpdateUserPasswordResponse;
 import com.highline.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
+@ResponseBody
 @RequestMapping("user")
 public class UserEndpoint extends BaseEndpoint {
 
@@ -17,7 +19,7 @@ public class UserEndpoint extends BaseEndpoint {
     UserService userService;
 
     @CrossOrigin
-    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/update")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
@@ -33,4 +35,11 @@ public class UserEndpoint extends BaseEndpoint {
     public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
     }
+
+    @CrossOrigin
+    @GetMapping(path = "/get")
+    public String getUser() {
+        return "updatePassword";
+    }
+
 }

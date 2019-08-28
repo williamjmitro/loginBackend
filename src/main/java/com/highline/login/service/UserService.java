@@ -12,4 +12,6 @@ public interface UserService {
     public ListUsersResponse listUsers();
 
     public void addUser(AddUserRequest request);
+
+    public void getUser(String userId);
 }
