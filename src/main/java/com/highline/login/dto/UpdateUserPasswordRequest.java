@@ -3,8 +3,7 @@ package com.highline.login.dto;
 public class UpdateUserPasswordRequest {
 
     private String userName;
-
-
+    
     private String newPassword;
 
     public String getUserName() {
@@ -14,7 +13,6 @@ public class UpdateUserPasswordRequest {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
 
     public String getNewPassword() {
         return newPassword;

@@ -58,6 +58,8 @@ public class UserServiceImpl extends BaseService implements UserService {
         for (User user : userList) {
             UserDto returnUser = new UserDto();
             returnUser.setUserName(user.getUsername());
+            byte[] decodedPassword = BaseEncoding.base16().decode(user.getPassword());
+            returnUser.setPassword(new String(decodedPassword));
             returnList.add(returnUser);
         }
         response.setUserList(returnList);
