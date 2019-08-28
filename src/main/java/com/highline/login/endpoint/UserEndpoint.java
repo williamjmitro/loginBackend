@@ -8,6 +8,7 @@ import com.highline.login.dto.UpdateUserPasswordResponse;
 import com.highline.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -34,8 +35,8 @@ public class UserEndpoint extends BaseEndpoint {
         userService.addUser(request);
     }
 
-    @RequestMapping(path = "/user/get", method = RequestMethod.GET)
-    public String index() {
+    @GetMapping(path = "/user/get")
+    public String index(Model model) {
         return "index";
     }
 
