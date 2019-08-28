@@ -34,7 +34,7 @@ public class UserEndpoint extends BaseEndpoint {
         userService.addUser(request);
     }
 
-    @GetMapping(path = "/user/get")
+    @RequestMapping(path = "/user/get", method = RequestMethod.GET)
     public String index() {
         return "index";
     }
