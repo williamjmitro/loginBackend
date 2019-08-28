@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@ResponseBody
 @RequestMapping("user")
 public class UserEndpoint extends BaseEndpoint {
 
@@ -19,18 +18,21 @@ public class UserEndpoint extends BaseEndpoint {
     UserService userService;
 
     @CrossOrigin
+    @ResponseBody
     @PutMapping(value = "/update")
     public UpdateUserPasswordResponse updateUserPassword(@RequestBody UpdateUserPasswordRequest request) {
         return userService.updateUserPassword(request);
     }
 
     @CrossOrigin
+    @ResponseBody
     @GetMapping(path = "/list")
     public ListUsersResponse listUser() {
         return userService.listUsers();
     }
 
     @CrossOrigin
+    @ResponseBody
     @PostMapping(path = "/add")
     public void addUser(@RequestBody AddUserRequest request) {
         userService.addUser(request);
