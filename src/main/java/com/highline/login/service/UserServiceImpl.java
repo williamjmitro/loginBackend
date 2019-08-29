@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class UserServiceImpl extends BaseService implements UserService {
@@ -25,10 +27,13 @@ public class UserServiceImpl extends BaseService implements UserService {
         User user = userRepository.findByUsername(request.getUserName());
 
         UpdateUserPasswordResponse response = new UpdateUserPasswordResponse();
+        boolean passwordMatch = (request.getNewPasswordFirst().equals(request.getNewPasswordSecond()) ? true : false);
+        boolean validPassword = validatePassword(request.getNewPasswordFirst());
 
-        if (user != null) {
 
-            byte[] password = request.getNewPassword().getBytes();
+        if (user != null && passwordMatch && validPassword) {
+
+            byte[] password = request.getNewPasswordFirst().getBytes();
             String newPassword = BaseEncoding.base16().encode(password);
 
             user.setPassword(newPassword);
@@ -36,14 +41,26 @@ public class UserServiceImpl extends BaseService implements UserService {
             log.info("Updated password!");
 
             response.setSuccess(true);
-
+        } else if (!passwordMatch) {
+            response.setSuccess(false);
+            response.setErrorCode("1");
+        } else if (!validPassword) {
+            response.setSuccess(false);
+            response.setErrorCode("2");
         } else {
             response.setSuccess(false);
-            response.setError("Something went wrong please try again.");
+            response.setErrorCode("9999");
 
         }
 
         return response;
+    }
+
+    private Boolean validatePassword(String password) {
+        StringBuilder passwordRegex = new StringBuilder("((?=.*[a-z])(?=.*d)(?=.*[A-Z]).{8})");
+        Pattern p = Pattern.compile(passwordRegex.toString());
+        Matcher m = p.matcher(password);
+        return m.matches();
     }
 
     @Override

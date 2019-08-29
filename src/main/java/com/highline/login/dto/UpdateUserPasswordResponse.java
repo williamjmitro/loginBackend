@@ -4,7 +4,7 @@ public class UpdateUserPasswordResponse {
 
     private Boolean success;
 
-    private String error;
+    private String errorCode;
 
     public Boolean getSuccess() {
         return success;
@@ -14,11 +14,11 @@ public class UpdateUserPasswordResponse {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 }

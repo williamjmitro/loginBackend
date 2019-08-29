@@ -4,7 +4,9 @@ public class UpdateUserPasswordRequest {
 
     private String userName;
 
-    private String newPassword;
+    private String newPasswordFirst;
+
+    private String newPasswordSecond;
 
     public String getUserName() {
         return userName;
@@ -14,19 +16,20 @@ public class UpdateUserPasswordRequest {
         this.userName = userName;
     }
 
-    public String getNewPassword() {
-        return newPassword;
+    public String getNewPasswordFirst() {
+        return newPasswordFirst;
     }
 
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
+    public void setNewPasswordFirst(String newPasswordFirst) {
+        this.newPasswordFirst = newPasswordFirst;
     }
 
-    @Override
-    public String toString() {
-        return "UpdateUserPasswordRequest{" +
-                "userName='" + userName + '\'' +
-                ", newPassword='" + newPassword + '\'' +
-                '}';
+    public String getNewPasswordSecond() {
+        return newPasswordSecond;
     }
+
+    public void setNewPasswordSecond(String newPasswordSecond) {
+        this.newPasswordSecond = newPasswordSecond;
+    }
+
 }
