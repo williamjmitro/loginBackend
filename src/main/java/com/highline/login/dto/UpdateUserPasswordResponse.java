@@ -21,4 +21,12 @@ public class UpdateUserPasswordResponse {
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
+
+    @Override
+    public String toString() {
+        return "UpdateUserPasswordResponse{" +
+                "success=" + success +
+                ", errorCode='" + errorCode + '\'' +
+                '}';
+    }
 }

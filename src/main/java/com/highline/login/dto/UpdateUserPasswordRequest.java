@@ -32,4 +32,12 @@ public class UpdateUserPasswordRequest {
         this.newPasswordSecond = newPasswordSecond;
     }
 
+    @Override
+    public String toString() {
+        return "UpdateUserPasswordRequest{" +
+                "userName='" + userName + '\'' +
+                ", newPasswordFirst='" + newPasswordFirst + '\'' +
+                ", newPasswordSecond='" + newPasswordSecond + '\'' +
+                '}';
+    }
 }

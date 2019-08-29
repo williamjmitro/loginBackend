@@ -50,9 +50,9 @@ public class UserServiceImpl extends BaseService implements UserService {
         } else {
             response.setSuccess(false);
             response.setErrorCode("9999");
-
         }
 
+        log.info("< updateUserPassword " + response.toString());
         return response;
     }
 
